@@ -1,0 +1,12 @@
+
+fazer conjuntos com o novo dataset (60,128,128) - D
+
+fazer Augmentation 
+
+testar varios tamanhos de resnet
+
+testar classificação multiclasses e binaria dos 3 grupos
+
+
+implementar SA 
+	cbam - ver em 2D e depois estender
