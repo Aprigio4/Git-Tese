@@ -3,181 +3,181 @@ from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle
 
 
-def full_brain_AD_data():
+def full_brain_AD_data(dir_read):
     
     # Test set
-    x = np.load(('../PET_npy/FDG_PET_AD_Baseline_VI_1.npy'))
+    x = np.load((dir_read+'PET_npy/FDG_PET_AD_Baseline_VI_1.npy'))
     X_test = x.reshape((1,60,128,128,1))
     
     for i in range(2,11):
-        x = np.load(('../PET_npy/FDG_PET_AD_Baseline_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_AD_Baseline_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_test = np.concatenate((X_test, x), axis=0)
         X_test = X_test.reshape((-1,60,128,128,1))
     
     for i in range(1,11):
-        x = np.load(('../PET_npy/FDG_PET_AD_Month6_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'/PET_npy/FDG_PET_AD_Month6_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_test = np.concatenate((X_test, x), axis=0)
         X_test = X_test.reshape((-1,60,128,128,1))
     
     for i in range(1,11):
-        x = np.load(('../PET_npy/FDG_PET_AD_Month12_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'/PET_npy/FDG_PET_AD_Month12_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_test = np.concatenate((X_test, x), axis=0)
         X_test = X_test.reshape((-1,60,128,128,1))
         
     for i in range(1,11):
-        x = np.load(('../PET_npy/FDG_PET_AD_Month24_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'/PET_npy/FDG_PET_AD_Month24_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_test = np.concatenate((X_test, x), axis=0)
         X_test = X_test.reshape((-1,60,128,128,1))
     
     # Train set
-    x = np.load(('../PET_npy/FDG_PET_AD_Baseline_VI_11.npy'))
+    x = np.load((dir_read+'/PET_npy/FDG_PET_AD_Baseline_VI_11.npy'))
     X_train = x.reshape((1,60,128,128,1))
     
     for i in range(12,96):
-        x = np.load(('../PET_npy/FDG_PET_AD_Baseline_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'/PET_npy/FDG_PET_AD_Baseline_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X = np.concatenate((X_train, x), axis=0)
         X = X_train.reshape((-1,60,128,128,1))
     
     for i in range(11,87):
-        x = np.load(('../PET_npy/FDG_PET_AD_Month6_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'/PET_npy/FDG_PET_AD_Month6_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X = np.concatenate((X_train, x), axis=0)
         X = X_train.reshape((-1,60,128,128,1))
     
     for i in range(11,75):
-        x = np.load(('../PET_npy/FDG_PET_AD_Month12_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'/PET_npy/FDG_PET_AD_Month12_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_train = np.concatenate((X_train, x), axis=0)
         X_train = X_train.reshape((-1,60,128,128,1))
         
     for i in range(11,60):
-        x = np.load(('../PET_npy/FDG_PET_AD_Month24_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'/PET_npy/FDG_PET_AD_Month24_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_train = np.concatenate((X_train, x), axis=0)
         X_train = X_train.reshape((-1,60,128,128,1))
     
     return X_test, X_train
     
-def full_brain_CN_data():
+def full_brain_CN_data(dir_read):
     # Test set
-    x = np.load(('../PET_npy/FDG_PET_CN_Baseline_VI_1.npy'))
+    x = np.load((dir_read+'/PET_npy/FDG_PET_CN_Baseline_VI_1.npy'))
     X_test = x.reshape((1,60,128,128,1))
     
     for i in range(2,11):
-        x = np.load(('../PET_npy/FDG_PET_CN_Baseline_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_CN_Baseline_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_test = np.concatenate((X_test, x), axis=0)
         X_test = X_test.reshape((-1,60,128,128,1))
     
     for i in range(1,11):
-        x = np.load(('../PET_npy/FDG_PET_CN_Month6_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_CN_Month6_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_test = np.concatenate((X_test, x), axis=0)
         X_test = X_test.reshape((-1,60,128,128,1))
     
     for i in range(1,11):
-        x = np.load(('../PET_npy/FDG_PET_CN_Month12_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_CN_Month12_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_test = np.concatenate((X_test, x), axis=0)
         X_test = X_test.reshape((-1,60,128,128,1))
         
     for i in range(1,11):
-        x = np.load(('../PET_npy/FDG_PET_CN_Month24_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_CN_Month24_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_test = np.concatenate((X_test, x), axis=0)
         X_test = X_test.reshape((-1,60,128,128,1))
         
     # Train set    
-    x = np.load(('../PET_npy/FDG_PET_CN_Baseline_VI_11.npy'))
+    x = np.load((dir_read+'PET_npy/FDG_PET_CN_Baseline_VI_11.npy'))
     X_train = x.reshape((1,60,128,128,1))
     
     
     for i in range(2,100):
-        x = np.load(('../PET_npy/FDG_PET_CN_Baseline_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_CN_Baseline_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_train = np.concatenate((X_train, x), axis=0)
         X_train = X_train.reshape((-1,60,128,128,1))
     
     for i in range(1,95):
-        x = np.load(('../PET_npy/FDG_PET_CN_Month6_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_CN_Month6_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_train = np.concatenate((X_train, x), axis=0)
         X_train = X_train.reshape((-1,60,128,128,1))
     
     for i in range(1,86):
-        x = np.load(('../PET_npy/FDG_PET_CN_Month12_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_CN_Month12_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_train = np.concatenate((X_train, x), axis=0)
         X_train = X_train.reshape((-1,60,128,128,1))
         
     for i in range(1,85):
-        x = np.load(('../PET_npy/FDG_PET_CN_Month24_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_CN_Month24_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_train = np.concatenate((X_train, x), axis=0)
         X_train = X_train.reshape((-1,60,128,128,1))
     
     return X_test,X_train
 
-def full_brain_MCI_data():
+def full_brain_MCI_data(dir_read):
     
     # Test set
-    x = np.load(('../PET_npy/FDG_PET_MCI_Baseline_VI_1.npy'))
+    x = np.load((dir_read+'PET_npy/FDG_PET_MCI_Baseline_VI_1.npy'))
     X_test = x.reshape((1,60,128,128,1))
     
     for i in range(2,11):
-        x = np.load(('../PET_npy/FDG_PET_MCI_Baseline_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_MCI_Baseline_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_test = np.concatenate((X_test, x), axis=0)
         X_test = X_test.reshape((-1,60,128,128,1))
     
     for i in range(1,11):
-        x = np.load(('../PET_npy/FDG_PET_MCI_Month6_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_MCI_Month6_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_test = np.concatenate((X_test, x), axis=0)
         X_test = X_test.reshape((-1,60,128,128,1))
     
     for i in range(1,11):
-        x = np.load(('../PET_npy/FDG_PET_MCI_Month12_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_MCI_Month12_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_test = np.concatenate((X_test, x), axis=0)
         X_test = X_test.reshape((-1,60,128,128,1))
         
     for i in range(1,11):
-        x = np.load(('../PET_npy/FDG_PET_MCI_Month24_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_MCI_Month24_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_test = np.concatenate((X_test, x), axis=0)
         X_test = X_test.reshape((-1,60,128,128,1))
     
     # Train set
-    x = np.load(('../PET_npy/FDG_PET_MCI_Baseline_VI_11.npy'))
+    x = np.load((dir_read+'PET_npy/FDG_PET_MCI_Baseline_VI_11.npy'))
     X_train = x.reshape((1,60,128,128,1))
     
     
     for i in range(12,208):
-        x = np.load(('../PET_npy/FDG_PET_MCI_Baseline_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_MCI_Baseline_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_train = np.concatenate((X_train, x), axis=0)
         X_train = X_train.reshape((-1,60,128,128,1))
     
     for i in range(11,189):
-        x = np.load(('../PET_npy/FDG_PET_MCI_Month6_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_MCI_Month6_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_train = np.concatenate((X_train, x), axis=0)
         X_train = X_train.reshape((-1,60,128,128,1))
     
     for i in range(11,178):
-        x = np.load(('../PET_npy/FDG_PET_MCI_Month12_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_MCI_Month12_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X_train = np.concatenate((X_train, x), axis=0)
         X_train = X_train.reshape((-1,60,128,128,1))
         
     for i in range(11,143):
-        x = np.load(('../PET_npy/FDG_PET_MCI_Month24_VI_'+str(i)+'.npy'))
+        x = np.load((dir_read+'PET_npy/FDG_PET_MCI_Month24_VI_'+str(i)+'.npy'))
         x = x.reshape((1,60,128,128,1))     
         X = np.concatenate((X_train, x), axis=0)
         X_train = X_train.reshape((-1,60,128,128,1))
@@ -185,11 +185,11 @@ def full_brain_MCI_data():
     return X_test, X_train
 
 
-def group_data_full_brain():
+def group_data_full_brain(dir_save, dir_read):
         
-    AD_X_test, AD_X_train = full_brain_AD_data()
-    CN_X_test, CN_X_train = full_brain_CN_data()
-    MCI_X_test, MCI_X_train = full_brain_MCI_data()
+    AD_X_test, AD_X_train = full_brain_AD_data(dir_read)
+    CN_X_test, CN_X_train = full_brain_CN_data(dir_read)
+    MCI_X_test, MCI_X_train = full_brain_MCI_data(dir_read)
     
     # CN & AD (0,1)
     
@@ -207,11 +207,11 @@ def group_data_full_brain():
     
     CN_AD_X_train, CN_AD_Y_train = shuffle(CN_AD_X_train, CN_AD_Y_train)
     
-    np.save("FullBrain/CN_AD_X_train", CN_AD_X_train)
-    np.save("FullBrain/CN_AD_Y_train", CN_AD_Y_train)
+    np.save(dir_save+"FullBrain/CN_AD_X_train", CN_AD_X_train)
+    np.save(dir_save+"FullBrain/CN_AD_Y_train", CN_AD_Y_train)
     
-    np.save("FullBrain/CN_AD_X_test", CN_AD_X_test)
-    np.save("FullBrain/CN_AD_Y_test", CN_AD_Y_test)
+    np.save(dir_save+"FullBrain/CN_AD_X_test", CN_AD_X_test)
+    np.save(dir_save+"FullBrain/CN_AD_Y_test", CN_AD_Y_test)
     
     # CN & MCI (0,1)
     
@@ -226,11 +226,11 @@ def group_data_full_brain():
     
     CN_MCI_X_train, CN_MCI_Y_train = shuffle(CN_MCI_X_train, CN_MCI_Y_train)
     
-    np.save("FullBrain/CN_MCI_X_train", CN_MCI_X_train)
-    np.save("FullBrain/CN_MCI_Y_train", CN_MCI_Y_train)
+    np.save(dir_save+"FullBrain/CN_MCI_X_train", CN_MCI_X_train)
+    np.save(dir_save+"FullBrain/CN_MCI_Y_train", CN_MCI_Y_train)
     
-    np.save("FullBrain/CN_MCI_X_test", CN_MCI_X_test)
-    np.save("FullBrain/CN_MCI_Y_test", CN_MCI_Y_test)
+    np.save(dir_save+"FullBrain/CN_MCI_X_test", CN_MCI_X_test)
+    np.save(dir_save+"FullBrain/CN_MCI_Y_test", CN_MCI_Y_test)
     
     # MCI & AD (0,1)
         
@@ -245,11 +245,11 @@ def group_data_full_brain():
     
     MCI_AD_X_train, MCI_AD_Y_train = shuffle(MCI_AD_X_train, MCI_AD_Y_train)
     
-    np.save("FullBrain/MCI_AD_X_train", MCI_AD_X_train)
-    np.save("FullBrain/MCI_AD_Y_train", MCI_AD_Y_train)
+    np.save(dir_save+"FullBrain/MCI_AD_X_train", MCI_AD_X_train)
+    np.save(dir_save+"FullBrain/MCI_AD_Y_train", MCI_AD_Y_train)
     
-    np.save("FullBrain/MCI_AD_X_test", MCI_AD_X_test)
-    np.save("FullBrain/MCI_AD_Y_test", MCI_AD_Y_test)
+    np.save(dir_save+"FullBrain/MCI_AD_X_test", MCI_AD_X_test)
+    np.save(dir_save+"FullBrain/MCI_AD_Y_test", MCI_AD_Y_test)
     
     
     # CN & MCI & AD ((0,0,1), (0,1,0), (1,0,0))
@@ -281,11 +281,11 @@ def group_data_full_brain():
     
     CN_MCI_AD_X_train, CN_MCI_AD_Y_train = shuffle(CN_MCI_AD_X_train, CN_MCI_AD_Y_train)
     
-    np.save("FullBrain/CN_MCI_AD_X_train", CN_MCI_AD_X_train)
-    np.save("FullBrain/CN_MCI_AD_Y_train", CN_MCI_AD_Y_train)
+    np.save(dir_save+"FullBrain/CN_MCI_AD_X_train", CN_MCI_AD_X_train)
+    np.save(dir_save+"FullBrain/CN_MCI_AD_Y_train", CN_MCI_AD_Y_train)
     
-    np.save("FullBrain/CN_MCI_AD_X_test", CN_MCI_AD_X_test)
-    np.save("FullBrain/CN_MCI_AD_Y_test", CN_MCI_AD_Y_test)
+    np.save(dir_save+"FullBrain/CN_MCI_AD_X_test", CN_MCI_AD_X_test)
+    np.save(dir_save+"FullBrain/CN_MCI_AD_Y_test", CN_MCI_AD_Y_test)
   
   
 def spilt_flip(X):
@@ -297,34 +297,34 @@ def spilt_flip(X):
     
     return X_HL, X_HR
 
-def simple_brain_split(classe):
+def simple_brain_split(classe, dir_save):
 
     #Train
-    X = np.load("FullBrain/"+classe+"_X_train.npy")
-    Y = np.load("FullBrain/"+classe+"_Y_train.npy")
+    X = np.load(dir_save+"FullBrain/"+classe+"_X_train.npy")
+    Y = np.load(dir_save+"FullBrain/"+classe+"_Y_train.npy")
     
     X_HL, X_HR = spilt_flip(X)
     
-    np.save("SplitBrain/"+classe+"_X_train_HL", X_HL)
-    np.save("SplitBrain/"+classe+"_X_train_HR", X_HR)
-    np.save("SplitBrain/"+classe+"_Y_train", Y)
+    np.save(dir_save+"SplitBrain/"+classe+"_X_train_HL", X_HL)
+    np.save(dir_save+"SplitBrain/"+classe+"_X_train_HR", X_HR)
+    np.save(dir_save+"SplitBrain/"+classe+"_Y_train", Y)
     
     #Test
-    X = np.load("FullBrain/"+classe+"_X_test.npy")
-    Y = np.load("FullBrain/"+classe+"_Y_test.npy")
+    X = np.load(dir_save+"FullBrain/"+classe+"_X_test.npy")
+    Y = np.load(dir_save+"FullBrain/"+classe+"_Y_test.npy")
     
     X_HL, X_HR = spilt_flip(X)
     
-    np.save("SplitBrain/"+classe+"_X_test_HL", X_HL)
-    np.save("SplitBrain/"+classe+"_X_test_HR", X_HR)
-    np.save("SplitBrain/"+classe+"_Y_test", Y)
+    np.save(dir_save+"SplitBrain/"+classe+"_X_test_HL", X_HL)
+    np.save(dir_save+"SplitBrain/"+classe+"_X_test_HR", X_HR)
+    np.save(dir_save+"SplitBrain/"+classe+"_Y_test", Y)
 
 
-def group_data_split_brain():
+def group_data_split_brain(dir_save):
         
-    simple_brain_split("CN_AD")
-    simple_brain_split("CN_MCI")
-    simple_brain_split("MCI_AD")
-    simple_brain_split("CN_MCI_AD")
+    simple_brain_split("CN_AD", dir_save)
+    simple_brain_split("CN_MCI", dir_save)
+    simple_brain_split("MCI_AD", dir_save)
+    simple_brain_split("CN_MCI_AD", dir_save)
     
     
