@@ -297,6 +297,9 @@ def spilt_flip(X):
     
     return X_HL, X_HR
 
+def flip(X):
+  return X[:,:,::-1,:,:]
+
 def simple_brain_split(classe, dir_save):
 
     #Train
@@ -327,4 +330,21 @@ def group_data_split_brain(dir_save):
     simple_brain_split("MCI_AD", dir_save)
     simple_brain_split("CN_MCI_AD", dir_save)
     
+def augmentation(classe, dir_save):
+    #Train
+    X = np.load(dir_save+"FullBrain/"+classe+"_X_train.npy")
+    Y = np.load(dir_save+"FullBrain/"+classe+"_Y_train.npy")
     
+    X_aug = flip(X)
+    X = np.concatenate((X, X_aug), axis=0)
+    Y = np.concatenate((Y, Y), axis=0)
+
+    np.save(dir_save+"FullBrain_aug/"+classe+"_X_train", X)
+    np.save(dir_save+"FullBrain_aug/"+classe+"_Y_train", Y)
+    
+
+def aug_all(dir_save):
+    augmentation("CN_AD", dir_save)
+    augmentation("CN_MCI", dir_save)
+    augmentation("MCI_AD", dir_save)
+    augmentation("CN_MCI_AD", dir_save)
