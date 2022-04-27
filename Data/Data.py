@@ -186,11 +186,17 @@ def full_brain_MCI_data(dir_read):
 
 
 def group_data_full_brain(dir_save, dir_read):
-        
+    norm = 32700  
     AD_X_test, AD_X_train = full_brain_AD_data(dir_read)
     CN_X_test, CN_X_train = full_brain_CN_data(dir_read)
     MCI_X_test, MCI_X_train = full_brain_MCI_data(dir_read)
     
+    AD_X_train = AD_X_train/norm
+    AD_X_test = AD_X_test/norm
+    CN_X_train = CN_X_train/norm
+    CN_X_test = CN_X_test/norm
+    MCI_X_train = MCI_X_train/norm
+    MCI_X_test = MCI_X_test/norm
     # CN & AD (0,1)
     
     AD_Y_test = np.ones(AD_X_test.shape[0])
@@ -199,10 +205,10 @@ def group_data_full_brain(dir_save, dir_read):
     CN_Y_test = np.zeros(CN_X_test.shape[0])
     CN_Y_train = np.zeros(CN_X_train.shape[0])
     
-    CN_AD_X_test = np.concatenate((AD_X_test, CN_X_test), axis=0)
+    CN_AD_X_test = np.concatenate((AD_X_test, CN_X_test), axis=0)/norm
     CN_AD_Y_test = np.concatenate((AD_Y_test, CN_Y_test), axis=0)
     
-    CN_AD_X_train = np.concatenate((AD_X_train, CN_X_train), axis=0)
+    CN_AD_X_train = np.concatenate((AD_X_train, CN_X_train), axis=0)/norm
     CN_AD_Y_train = np.concatenate((AD_Y_train, CN_Y_train), axis=0)
     
     CN_AD_X_train, CN_AD_Y_train = shuffle(CN_AD_X_train, CN_AD_Y_train)
