@@ -379,24 +379,24 @@ def full_brain_classe_data(dir_save, dir_read, classe):
     
 def merge_classe(dir_save, class1, class0):
     if class1 == "AD":
-        size_train_1 = 96+87+75+60
         size_test_1 = 40
+        size_train_1 = 96+87+75+60 - size_test_1
     elif class1 == "CN":
-        size_train_1 = 100+95+86+85
         size_test_1 = 40
+        size_train_1 = 100+95+86+85 - size_test_1
     elif class1 == "MCI":
-        size_train_1 = 208+18+178+143
         size_test_1 = 80
+        size_train_1 = 208+18+178+143 - size_test_1
 
     if class0 == "AD":
-        size_train_0 = 96+87+75+60
         size_test_0 = 40
+        size_train_0 = 96+87+75+60 - size_test_0
     elif class0 == "CN":
-        size_train_0 = 100+95+86+85
         size_test_0 = 40
+        size_train_0 = 100+95+86+85 - size_test_0
     elif class0 == "MCI":
-        size_train_0 = 208+18+178+143
         size_test_0 = 80
+        size_train_0 = 208+18+178+143 - size_test_0
     
     Y_test_1 = np.ones(size_test_1)
     Y_train_1 = np.ones(size_train_1)
